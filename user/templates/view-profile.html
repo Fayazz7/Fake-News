@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    {% include "header.html" %}
+</head>
+
+<body>
+    {% include "nav-bar.html" %}
+    <div class="container">
+        <div class="container w-50 m-auto mt-5 border p-4 shadow">
+            <div class="d-flex justify-content-center ">
+                <div><img src="{{data.profile_pic.url}}" alt="" height="150px" width="150px" class="rounded-pill ">
+                </div>
+
+            </div>
+            <div class="d-flex justify-content-center fw-bolder mt-3">
+                <h1> {{data.user.username}} </h1>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for="" class="mt-2">Email:</label>
+                    <span class="form-control mt-2"> {{data.user.email}} </span>
+                </div>
+                <div class="col-6">
+                    <label for="" class="mt-2">Date of Birth:</label>
+                    <span class="form-control mt-2"> {{data.dob}} </span>
+                </div>
+                <div class="col-6">
+                    <label for="" class="mt-2">Age:</label>
+                    <span class="form-control mt-2"> {{data.age}} </span>
+                </div>
+                <div class="col-6">
+                    <label for="" class="mt-2">Gender:</label>
+                    <span class="form-control mt-2"> {{data.gender}} </span>
+                </div>
+                <div class="col-12">
+                    <label for="" class="mt-2">About:</label>
+                    <span class="form-control mt-2"> {{data.about}} </span>
+                </div>
+                {% if request.user.is_superuser %}
+                <div class="d-flex justify-content-center  mt-5">
+                    <a href="{% url 'delete-user' data.id %}" class="btn btn-outline-danger">Delete</a>
+                </div>
+                {%else%}
+                <div class="d-flex justify-content-around  mt-5">
+                    <a href="{% url 'profile-update' data.id %}" class="btn btn-primary">Update</a>
+                    <a href="{% url 'profile-delete' data.id %}" class="btn btn-outline-danger">Delete</a>
+                </div>
+                {%endif%}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

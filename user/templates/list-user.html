@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    {% include "header.html" %}
+</head>
+
+<body>
+    {% include 'nav-bar.html' %}
+    <div class="container mt-5">
+        <h2 class="text-center mb-4 fw-bolder ">All Requests</h2>
+        <div class="table-responsive">
+
+            <table class="table  table-bordered">
+                <thead class="bg-black">
+                    <tr class="table-dark">
+                        <th class="align-middle">User</th>
+                        <th class="align-middle">Email</th>
+                        <th class="align-middle">About</th>
+                        <th class="align-middle">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in data %}
+                    <tr>
+                        <td class="align-middle"> {{d.user.username}} </td>
+                        <td class="align-middle"> {{d.user.email}} </td>
+                        <td class="align-middle  "> {{d.about}} </td>
+                        <td class="align-middle d-flex justify-content-center "><a
+                                href="{% url 'profile-view' d.user.id %}" class="btn btn-primary ">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+
+</html>

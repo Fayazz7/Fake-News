@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request</title>
+    {% include "header.html" %}
+</head>
+
+<body>
+    {% include "nav-bar.html" %}
+    <div class="container">
+        <div class="container  mt-2  ">
+            <div class="container d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{data.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="text-center fw-bolder ">Topic</h5>
+                        <p class="card-text">{{data.text}}</p>
+                        <p>Status: {{data.status}} </p>
+                    <div class="d-flex justify-content-around p-2">
+                        <a class="btn btn-primary" href="{% url 'edit-request' data.id %}">Edit</a>
+                        <a class="btn btn-danger " href="{% url 'delete-request' data.id %}">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

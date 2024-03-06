@@ -1,0 +1,22 @@
+User log in 
+User registration
+admin login
+
+User Side 
+--------------------
+Add New News request - done
+View Request - done
+Delete Request - done
+Request status -done
+profile create - done
+Profile View - done
+Profile Update -done
+Profile Delete -done
+
+Admin Side 
+-------------------
+View All User- done
+delete user - done
+View Request 
+Update Request Status 
+View All Request - done

@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% include "header.html" %}
+</head>
+
+<body>
+    {% include "nav-bar.html" %}
+    <div class="container mt-5">
+        <h2 class="text-center mb-4 fw-bolder ">All Requests</h2>
+        <div class="table-responsive">
+
+            <table class="table  table-bordered">
+                <thead class="bg-black">
+                    <tr class="table-dark">
+                        <th class="align-middle">User</th>
+                        <th class="align-middle">Topic</th>
+                        <th class="align-middle">Status</th>
+                        <th class="align-middle">View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in data %}
+                    <tr>
+                        <td class="align-middle"> {{d.owner}} </td>
+                        <td class="align-middle"> {{d.text}} </td>
+                        {% if d.status == "pending" %}
+                        <td class="align-middle  "> {{d.status}} </td>
+                        {% else %}
+                        <td class="align-middle text-info "> {{d.status}} </td>
+                        {% endif %}
+                        <td class="align-middle d-flex justify-content-center "><a href=""
+                                class="btn btn-info ">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

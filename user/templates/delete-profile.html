@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    {% include "header.html" %}
+</head>
+
+<body>
+    {% include "nav-bar.html" %}
+    <div class="container mt-2">
+        <h2 class="text-center fw-bolder ">Delete Profile</h2>
+        <div class="container ">
+            {% if messages %}
+            <div class="alert alert-success" role="alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="alert alert-danger" role="alert">
+                Are you sure you want to delete your profile?
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a href="{% url 'user-home' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
