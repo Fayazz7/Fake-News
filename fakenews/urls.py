@@ -41,5 +41,6 @@ urlpatterns = [
     path('user/request/edit/<int:pk>',views.UpdateRequestView.as_view(),name='edit-request'),
     path('list/users',views.UserListView.as_view(),name='list-user'),
     path('delete/user/<int:pk>',views.UserDeleteView.as_view(),name='delete-user'),
-    path('update/request/<int:pk>',views.UpdateRequestView.as_view(),name='update-request'),
+    path('update/request/<int:pk>',views.AdminUpdateRequestView.as_view(),name='update-request'),
+    path('view/request/<int:pk>',views.AdminDetailRequestView.as_view(),name='admin-view-request')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

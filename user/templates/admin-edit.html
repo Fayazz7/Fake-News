@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request</title>
+    {% include "header.html" %}
+</head>
+
+<body>
+    {% include "nav-bar.html" %}
+    <div class="container">
+        <div class="container  mt-2  ">
+            <div class="container d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{data.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="text-center fw-bolder ">Topic</h5>
+                        <p class="card-text">{{data.text}}</p>
+                        <p>Status: {{data.status}} </p>
+                        <form action="{% url 'update-request' data.id %}" method="post" class="d-flex justify-content-center gap-2">
+                            {% csrf_token %}
+                            <select name="status" id="" class=" form-select  form-control  ">
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                            <button type="submit" class="btn btn-outline-primary ">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

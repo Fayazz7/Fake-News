@@ -62,7 +62,7 @@ class UserIndexView(ListView):
 
 class AdminIndexView(ListView):
     model = UserRequest
-    template_name = "user-index.html"
+    template_name = "admin-index.html"
     context_object_name = "data"
 
 
@@ -171,3 +171,17 @@ class UserDeleteView(View):
         id = kwargs.get("pk")
         User.objects.get(id=id).delete()
         return redirect("admin-home")
+
+
+class AdminUpdateRequestView(View):
+    def post(self, request, *args, **kwargs):
+        id = kwargs.get("pk")
+        value = request.POST.get("status")
+        UserRequest.objects.filter(id=id).update(status=value)
+        return redirect ('admin-home')
+
+class AdminDetailRequestView(View):
+    def get(self, request, *args, **kwargs):
+        id = kwargs.get("pk")
+        qs = UserRequest.objects.get(id=id)
+        return render(request, "admin-edit.html", {"data": qs})

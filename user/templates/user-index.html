@@ -31,8 +31,10 @@
                         <td class="align-middle"> {{d.text}} </td>
                         {% if d.status == "pending" %}
                         <td class="align-middle  "> {{d.status}} </td>
+                        {% elif d.status == "approved" %}
+                        <td class="align-middle text-success  "> {{d.status}} </td>
                         {% else %}
-                        <td class="align-middle text-info "> {{d.status}} </td>
+                        <td class="align-middle text-danger"> {{d.status}} </td>
                         {% endif %}
                         <td class="align-middle d-flex justify-content-center "><a
                                 href="{% url 'view-request' d.id %}" class="btn btn-info ">View</a></td>
